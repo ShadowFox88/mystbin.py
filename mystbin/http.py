@@ -145,9 +145,9 @@ class HTTPClient:
     def _resolve_api(self, api: str | None) -> None:
         if api:
             Route.API_BASE = api + "api" if api.endswith("/") else api + "/api"
-            self.api_base = api + ("/" if not api.endswith("/") else "")
+            self.api_base: str = api + ("/" if not api.endswith("/") else "")
         else:
-            self.api_base = "https://mystb.in/"
+            self.api_base: str = "https://mystb.in/"
 
     async def close(self) -> None:
         if self._session and self._owns_session:
